@@ -1,66 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Digitallibrary
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Digitallibrary adalah platform digital yang dirancang untuk memudahkan pengelolaan perpustakaan dan akses informasi bagi pengguna. Dengan menggunakan aplikasi ini, pengguna dapat melakukan berbagai hal, termasuk mencari, meminjam, memberikan ulasan dan mengembalikan buku secara online.
 
-## About Laravel
+## fitur yang ada  di projek ini
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- https://startbootstrap.com/theme/sb-admin-2
+    - Dashboard UI
+- Halaman Awal (Landing Page)
+    - Halaman Beranda
+    - Fitur
+    - Layanan
+    - Ulasan
+    - Buku
+    - Genre Buku (Kategori)
+- Authentication
+    - Pendaftaran (register)
+    - Login
+- Multi User
+    - Admin
+        - Buku yang dapat dikelola
+        - Mengkonfirmasi Pengembalian buku
+        - Generate Laporan (EXCEL)
+    - Petugas
+        - Buku yang dapat dikelola
+        - Mengkonfirmasi Pengembalian buku
+        - Generate Laporan (EXCEL)
+    - Peminjam
+        - Melihat dan Meminjam Buku 
+        - Member Rating dan Ulasan buku
+        - Register (membuat akun sebagai peminjam)
+    - Semua 
+        - Login
+        - Logout
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ERD & Relasi antar tabel
+![baru drawio](https://github.com/fadil-syam/ukk/assets/140788604/78854bb0-40c5-4b1a-90c5-f8bf06ce5086)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Screenshot (19)](https://github.com/fadil-syam/ukk/assets/140788604/0ff8940b-07bc-4b93-a4d2-e6ecc4dc6c1c)
 
-## Learning Laravel
+## UML Diagram Use Case
+![Diagram Tanpa Judul drawio (1)](https://github.com/fadil-syam/ukk/assets/140788604/64428e84-f84c-4ce7-8732-1c00a8254586)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Prasyarat
+Syarat yang di perlukan untuk menginstal dan menjalankan aplikasi
+- PHP 8.2.8 & Web Server (Apache, Lighttpd, atau Nginx)
+- Database (MariaDB dengan v11.0.3 atau PostgreSQL)
+- Web Browser (Chrome, Firefox, Opera, dll)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalasi
+1.Klona repository
+```sh
+git clone https://github.com/fadil-syam/ukk.git
+composer install
+composer remove maatwebsite/excel
+composer require psr/simple-cache:^1.0 maatwebsite/excel --ignore-platform-reqs --with-all-dependencies
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2.Klona repository  .env
+```sh
+DB_DATABASE=digitallibrary
+FILESYSTEM_DISK=public
+```
 
-## Laravel Sponsors
+3.Migrasi dan symlink
+```sh
+php artisan storage:link
+php artisan migrate --seed
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4.Mulai situs web
+```sh
+php artisan serve
+```
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Pembuat
+digitallibrary dibuat oleh [fadil-syam](https://github.com/fadil-syam/ukk.git)
